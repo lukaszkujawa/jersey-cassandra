@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Context;
 
 import javax.servlet.ServletContext;
-import com.example.cassandra.AsynchronousClient;
+import com.example.cassandra.Client;
 import com.datastax.driver.core.ResultSet;
 import com.datastax.driver.core.Row;
 
@@ -19,7 +19,7 @@ public class MyResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getIt(@Context ServletContext context) {
         String output = "";
-        AsynchronousClient client =  (AsynchronousClient) context.getAttribute("DB");
+        Client client =  (Client) context.getAttribute("DB");
         client.execute("USE testspace;");
 
         ResultSet rs = client.execute("SELECT * from users;");

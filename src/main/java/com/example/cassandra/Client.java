@@ -2,12 +2,12 @@ package com.example.cassandra;
 
 import com.datastax.driver.core.*;
 
-public class AsynchronousClient {
+public class Client {
 
 	private Cluster cluster;
 	private Session session;
 
-	public AsynchronousClient(String node) {
+	public Client(String node) {
 		connect( node );
 	}
 

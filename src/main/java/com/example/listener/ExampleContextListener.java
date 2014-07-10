@@ -4,16 +4,16 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
  
-import com.example.cassandra.AsynchronousClient;
+import com.example.cassandra.Client;
 
 public class ExampleContextListener implements ServletContextListener {
  
-    AsynchronousClient cassandraClient;
+    Client cassandraClient;
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {
         ServletContext ctx = servletContextEvent.getServletContext();
 
-        cassandraClient = new AsynchronousClient( ctx.getInitParameter( "DBHost" ) );
+        cassandraClient = new Client( ctx.getInitParameter( "DBHost" ) );
         ctx.setAttribute( "DB", cassandraClient );
 
         /*
